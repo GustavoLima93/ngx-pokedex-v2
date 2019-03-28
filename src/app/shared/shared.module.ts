@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {ScrollDispatchModule} from '@angular/cdk/scrolling'  
-
+import { UppercasePipe } from './pipes/uppercase.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    UppercasePipe
+  ],
   imports: [
-    CommonModule,
-    
+    CommonModule
+  ],
+  exports: [
+    UppercasePipe
   ]
 })
 export class SharedModule { }

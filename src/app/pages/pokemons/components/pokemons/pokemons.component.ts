@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild, OnChanges } from '@angular/core';
 
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
@@ -13,7 +13,7 @@ import { Pokemon } from './../../../../models/pokemon.model';
   templateUrl: './pokemons.component.html',
   styleUrls: ['./pokemons.component.scss']
 })
-export class PokemonsComponent implements OnInit {
+export class PokemonsComponent implements OnInit, OnChanges {
 
   @ViewChild('modal') modal: TemplateRef<BsModalRef>;
 
@@ -32,11 +32,25 @@ export class PokemonsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getPokemons()
+    this.pokemonsService.filtroAtual.subscribe((pokemonName:string) => {
+      pokemonName ? this.searchPokemon(pokemonName) : this.getPokemons();
+    })
+  }
+
+  ngOnChanges() {
+    this.pokemonsService.filtroAtual.subscribe((pokemonName:string) => {
+      pokemonName ? this.searchPokemon(pokemonName) : this.getPokemons();
+    })
   }
 
   getPokemons() {
     return this.pokemonsService.getAllPokemons().subscribe((pokemons: Pokemon[]) => {
+      this.pokemons = pokemons;
+    })
+  }
+
+  searchPokemon(pokemonName:string) {
+    return this.pokemonsService.getFilterPokemons(pokemonName).subscribe((pokemons: Pokemon[]) => {
       this.pokemons = pokemons;
     })
   }

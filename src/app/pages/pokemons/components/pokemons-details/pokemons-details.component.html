@@ -1,23 +1,32 @@
 <div class="modal-body">
-  <div class="container">
-    <div class="card m-auto border-0">
-      <div class="card-footer d-flex justify-content-center bg-transparent border-0" *ngIf="pokemon.tipo">
-        <button *ngFor="let pkmTipo of pokemon.tipo" type="button" [ngClass]="pkmTipo.nome" class="btn btn-sm mr-2">
-          {{pkmTipo.nome}}
-        </button>
+  <h4 class="card-title text-center mt-2">{{ pokemon?.nome | uppercase }}</h4>
+  <div class="card bg-transparent border-0">
+    <div class="d-flex justify-content-center bg-transparent border-0">
+      <div class="img">
+        <img src="{{ pokemon?.gif }}" alt="Card image cap" />
       </div>
-      
-          <img width="84" height="66" src="{{pokemon?.gif}}" alt=""><p>{{pokemon?.descricao}}</p>
-     
-      
     </div>
-    <!-- <h4 class="card-title text-center mt-2">Power</h4> -->
-    <!-- <div class="d-flex justify-content-center p-2">
-        <app-pokemons-power [single]="pokemon?.status"></app-pokemons-power>
-      </div>
-      <h4 class="card-title text-center mt-2">Sprits old-games</h4>
-      <div class="d-flex justify-content-center">
-        <app-pokemons-sprits [sprites]="pokemon?.sprites"></app-pokemons-sprits>
-      </div> -->
+    <div
+      class="card-footer d-flex justify-content-center bg-transparent border-0"
+      *ngIf="pokemon.tipo"
+    >
+      <button
+        *ngFor="let pkmTipo of pokemon.tipo"
+        type="button"
+        [ngClass]="pkmTipo.nome"
+        class="btn btn-sm mr-2"
+      >
+        {{ pkmTipo.nome | uppercase }}
+      </button>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title text-center mt-2">Description</h4>
+      <p class="card-text">{{ pokemon?.descricao }}</p>
+    </div>
+  </div>
+
+  <h4 class="card-title text-center mt-2">Power</h4>
+  <div class="d-flex justify-content-center p-2">
+    <app-power-pokemon [single]="pokemon?.status"></app-power-pokemon>
   </div>
 </div>
