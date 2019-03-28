@@ -1,0 +1,12 @@
+<div class="container">
+  <app-pokemons-list [pokemons]='pokemons' (pokemon)='detailsPokemon($event)'> </app-pokemons-list>
+</div>
+
+<ng-template #modal>
+  <button type="button" class="close ml-auto" aria-label="Close" (click)="modalRef.hide()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+ 
+  <app-pokemons-details [pokemon] = "pokemon" ></app-pokemons-details>
+  
+</ng-template>

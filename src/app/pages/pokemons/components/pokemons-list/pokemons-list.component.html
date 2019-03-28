@@ -1,0 +1,10 @@
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+  <div class="row">
+    <div *cdkVirtualFor="let pkm of pokemons" class="col-lg-3" (click) = 'pokemonDetails(pkm)'>
+      <div class="card m-auto shadow">
+        <h4 class="card-title text-center mt-2">#{{pkm.numeroDex}} {{pkm.nome}}</h4>
+        <img class="card-img" src="{{pkm.img}}" alt="">
+      </div>
+    </div>
+  </div>
+</cdk-virtual-scroll-viewport>

@@ -1,0 +1,23 @@
+<div class="modal-body">
+  <div class="container">
+    <div class="card m-auto border-0">
+      <div class="card-footer d-flex justify-content-center bg-transparent border-0" *ngIf="pokemon.tipo">
+        <button *ngFor="let pkmTipo of pokemon.tipo" type="button" [ngClass]="pkmTipo.nome" class="btn btn-sm mr-2">
+          {{pkmTipo.nome}}
+        </button>
+      </div>
+      
+          <img width="84" height="66" src="{{pokemon?.gif}}" alt=""><p>{{pokemon?.descricao}}</p>
+     
+      
+    </div>
+    <!-- <h4 class="card-title text-center mt-2">Power</h4> -->
+    <!-- <div class="d-flex justify-content-center p-2">
+        <app-pokemons-power [single]="pokemon?.status"></app-pokemons-power>
+      </div>
+      <h4 class="card-title text-center mt-2">Sprits old-games</h4>
+      <div class="d-flex justify-content-center">
+        <app-pokemons-sprits [sprites]="pokemon?.sprites"></app-pokemons-sprits>
+      </div> -->
+  </div>
+</div>
