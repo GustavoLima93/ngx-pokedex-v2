@@ -6,6 +6,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { PokemonsService } from './../../services/pokemons.service';
 
 import { Pokemon } from './../../../../models/pokemon.model';
+import { take } from 'rxjs/operators';
 
 
 @Component({
@@ -44,7 +45,7 @@ export class PokemonsComponent implements OnInit, OnChanges {
   }
 
   getPokemons() {
-    return this.pokemonsService.getAllPokemons().subscribe((pokemons: Pokemon[]) => {
+    return this.pokemonsService.getAllPokemons().pipe(take(1)).subscribe((pokemons: Pokemon[]) => {
       this.pokemons = pokemons;
     })
   }
